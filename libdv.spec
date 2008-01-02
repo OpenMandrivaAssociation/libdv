@@ -15,6 +15,7 @@ URL:		http://libdv.sourceforge.net/
 Patch0:		libdv-mmxdetect-athlon.patch
 Patch4:		libdv-0.104-zap-config.h.patch
 Patch5:		libdv-0.104-move-config.h-to-apps.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Summary:	DV software video codec
 BuildRequires:	popt-devel libxv-devel X11-devel
 
