@@ -1,6 +1,6 @@
 %define	name	libdv
 %define	version	1.0.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 %define	major	4
 %define	libname	%mklibname dv %{major}
