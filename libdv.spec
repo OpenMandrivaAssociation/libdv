@@ -1,14 +1,16 @@
 %define	name	libdv
 %define	version	1.0.0
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 %define	major	4
 %define	libname	%mklibname dv %{major}
+%define develname %mklibname -d dv
+%define staticname %mklibname -d -s dv
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	LGPLv2+
 Group:		Video
 Source0:	http://prdownloads.sourceforge.net/libdv/%name-%version.tar.bz2
 URL:		http://libdv.sourceforge.net/
@@ -57,15 +59,15 @@ was developed according to the official standards for DV video, IEC
 This is the libraries, include files and other resources you can use
 to incorporate libdv into applications.
 
-%package -n	%{libname}-devel
+%package -n	%develname
 Summary:	Devel files from libdv
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Requires:	popt-devel
 Provides:	libdv-devel = %{version}-%{release}
-Requires:	pkgconfig
+Obsoletes: 	%mklibname -d dv 4
  
-%description -n	%{libname}-devel
+%description -n	%develname
 The Quasar DV codec (libdv) is a software codec for DV video.  DV is
 the encoding format used by most digital camcorders, typically those
 that support the IEEE 1394 (aka FireWire or i.Link) interface.  libdv
@@ -75,12 +77,13 @@ was developed according to the official standards for DV video, IEC
 This is the libraries, include files and other resources you can use
 to incorporate libdv into applications.
 
-%package -n	%{libname}-static-devel
+%package -n	%staticname
 Group:		Development/C
 Summary:	Static library of %{name}
-Requires:	%{libname}-devel = %{version}
+Requires:	%develname = %{version}
+Obsoletes:	%mklibname -s -d dv 4
 
-%description -n	%{libname}-static-devel
+%description -n	%staticname
 This package contains the static library required for statically
 linking applications based on %{name}.
 
@@ -125,9 +128,9 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr (- ,root,root)
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %develname
 %defattr(-, root, root)
 %doc ChangeLog COPYING README AUTHORS NEWS INSTALL TODO COPYRIGHT
 %{_includedir}/libdv
@@ -135,7 +138,7 @@ rm -rf %{buildroot}
 %{_libdir}/*.la
 %{_libdir}/pkgconfig/libdv.pc
 
-%files -n %{libname}-static-devel
+%files -n %staticname
 %defattr(-,root,root)
 %{_libdir}/*.a
 
