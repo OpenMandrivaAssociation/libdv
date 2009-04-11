@@ -98,9 +98,6 @@ linking applications based on %{name}.
 if [ ! -f configure ]; then
   ./bootstrap
 fi
-%if %mdkversion <= 1000
-%define __libtoolize true
-%endif
 %configure2_5x --enable-shared --disable-gtk
 
 %make
