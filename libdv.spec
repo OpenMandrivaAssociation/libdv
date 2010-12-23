@@ -19,7 +19,7 @@ Patch4:		libdv-0.104-zap-config.h.patch
 Patch5:		libdv-0.104-move-config.h-to-apps.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Summary:	DV software video codec
-BuildRequires:	popt-devel libxv-devel X11-devel
+BuildRequires:	popt-devel
 
 %description 
 The Quasar DV codec (libdv) is a software codec for DV video.  DV is
