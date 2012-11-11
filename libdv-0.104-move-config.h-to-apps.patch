@@ -1,0 +1,54 @@
+#!/bin/sh -e
+## 11_move_config_h_to_apps.dpatch by Daniel Kobras <kobras@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Removing inclusion of config.h from dv_types.h revealed two
+## DP: files that should include it themselves.
+
+if [ $# -lt 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch}"
+
+case "$1" in
+       -patch) patch $patch_opts -p1 < $0;;
+       -unpatch) patch $patch_opts -p1 -R < $0;;
+        *)
+                echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+                exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -urNad /home/kobras/src/debian/libdv/encodedv/encodedv.c libdv/encodedv/encodedv.c
+--- /home/kobras/src/debian/libdv/encodedv/encodedv.c	2004-01-19 13:06:49.000000000 +0100
++++ libdv/encodedv/encodedv.c	2004-01-19 23:58:45.000000000 +0100
+@@ -24,6 +24,10 @@
+  *  The libdv homepage is http://libdv.sourceforge.net/.  
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <string.h>
+ #include "libdv/dv_types.h"
+ #include "libdv/dv.h"
+diff -urNad /home/kobras/src/debian/libdv/encodedv/insert_audio.c libdv/encodedv/insert_audio.c
+--- /home/kobras/src/debian/libdv/encodedv/insert_audio.c	2004-01-19 13:06:49.000000000 +0100
++++ libdv/encodedv/insert_audio.c	2004-01-19 23:59:22.000000000 +0100
+@@ -23,6 +23,10 @@
+  *  The libdv homepage is http://libdv.sourceforge.net/.  
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include "libdv/dv_types.h"
+ 
+ #include <stdio.h>
