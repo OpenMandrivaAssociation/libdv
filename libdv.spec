@@ -5,7 +5,7 @@
 Summary:	DV software video codec
 Name:		libdv
 Version:	1.0.0
-Release:	15
+Release:	16
 License:	LGPLv2+
 Group:		Video
 Url:		http://libdv.sourceforge.net/
