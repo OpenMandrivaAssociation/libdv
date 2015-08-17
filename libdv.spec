@@ -1,6 +1,7 @@
 %define major	4
 %define libname	%mklibname dv %{major}
 %define devname	%mklibname -d dv
+%define _disable_rebuild_configure 1
 
 Summary:	DV software video codec
 Name:		libdv
