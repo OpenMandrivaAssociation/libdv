@@ -10,7 +10,7 @@ Version:	1.0.0
 Release:	27
 License:	LGPLv2+
 Group:		Video
-Url:		http://libdv.sourceforge.net/
+Url:		https://libdv.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdv/%{name}-%{version}.tar.bz2
 Patch0:		libdv-mmxdetect-athlon.patch
 Patch4:		libdv-0.104-zap-config.h.patch
