@@ -15,6 +15,11 @@ Source0:	http://prdownloads.sourceforge.net/libdv/%{name}-%{version}.tar.bz2
 Patch0:		libdv-mmxdetect-athlon.patch
 Patch4:		libdv-0.104-zap-config.h.patch
 Patch5:		libdv-0.104-move-config.h-to-apps.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(popt)
 
 %description
